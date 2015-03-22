@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:top" />
+<title>找回密码_城外圈广告平台</title>
+<script src="/news_skin/js/jquery.min.js"></script>
+<script src="/news_skin/js/newcwq_menu.js"></script>
+<link href="/news_skin/cwq_loginreg.css" rel="stylesheet" media="screen" type="text/css" />
+</head>
+<body>
+
+<include file="Public:header" />
+
+<div class="login_container">
+<div class="newcwq_wrap clearfix"><div class="crumb">当前位置：<a href="http://www.cwq.com/"  title="城外圈广告平台" style="cursor:pointer;">城外圈广告平台</a> &gt; 找回密码</div></div>
+<div class="blank20"></div>
+<div class="newcwq_wrap clearfix">
+    <ul class="steps-bar steps-bar-4">
+    <li class="step step--first step1-title" style="z-index:4">
+    <span class="step__num ">1.</span>
+    <span>输入账号</span>
+    <span class="arrow__background"></span>
+    <span class="arrow__foreground"></span>
+    </li>
+    <li class="step step--pre step2-title step--current" style="z-index:3">
+    <span class="step__num">2.</span>
+    <span>选择验证方式</span>
+    <span class="arrow__background"></span>
+    <span class="arrow__foreground"></span>
+    </li>
+    <li class="step step--pre step3-title" style="z-index:2">
+    <span class="step__num">3.</span>
+    <span>验证并重置密码</span>
+    <span class="arrow__background"></span>
+    <span class="arrow__foreground"></span>
+    </li>
+    <li class="step step--last step--pre step4-title" style="z-index:1">
+    <span class="step__num">4.</span>
+    <span>完成</span>
+    </li>
+    </ul>  
+</div>
+<div class="login_mod login_bg1 p40" id="step2">
+  <div class="login_title">您正在为账号<b class="red pl5 pr5">{$view_data.account}</b>重置登录密码，请选择找回方式</div>
+  <div class="login_con clearfix" style="width:550px; margin:0 auto;">
+  	<div class="retrieve-type">
+    <h2><i class="fa fa-phone-square"></i> 手机验证</h2>
+    <p>通过绑定的手机进行短信验证与密码重置</p>
+    </div>
+    <div class="blank40"></div>
+    <div class="form-group clearfix">
+        <div class="w220 fl"><input type="submit" class="btn redbtn" id="back" value="上一步"></div>
+        <div class="w220 fr"><input type="submit" class="btn redbtn" id="go" value="立即找回"></div>
+    </div>
+
+  </div>
+</div>
+<div class="blank40"></div></div>
+<script type="text/javascript">
+$(function(){
+  $(".J_infoTrigger").hover(function(){
+  $(this).css({"z-index":"10"});
+    $(this).find(".popover").show();
+},function(){
+  $(this).find(".popover").hide();
+  $(this).css({"z-index":"1"});
+   });
+});
+$('#back').click(function(){
+    window.location.href = "{:U('Index/Pass/index')}";
+});
+$('#go').click(function(){
+  window.location.href = "{:U('Index/Pass/newpassword',array('usd'=>$_GET['usd']))}";
+});
+</script>
+
+<include file="Public:footer" />
+
+<include file="Public:bottom" />
+
+</body>
+</html>

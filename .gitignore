@@ -1,0 +1,13 @@
+index.php
+App/Runtime/
+config.inc.php
+data
+.settings
+.buildpath
+.zfproject.xml
+.settings
+.project
+ThinkPHP
+config.inc.php
+App/Uploads/
+App/vendor/

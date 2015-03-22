@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<!-- 全局样式 -->
+	<include file="Public:top" />
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/select2_metro.css" />
+
+	<link rel="stylesheet" href="{$global_tpl_view.Group_Resource_Path}css/DT_bootstrap.css" />
+
+	<!-- END PAGE LEVEL STYLES -->
+
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<!-- 页头 -->
+	<include file="Public:header" />
+
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container row-fluid">
+
+		<!-- 左侧导航 -->
+		<include file="Public:sidebar" />
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN PAGE CONTAINER-->        
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+						<h3 class="page-title">
+								{$global_tpl_view.module_name}<small> {$global_tpl_view.action_name}</small>
+						</h3>
+
+					</div>
+
+				</div>
+
+				<!-- END PAGE HEADER-->
+
+				<!-- BEGIN PAGE CONTENT-->
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-globe"></i>{$global_tpl_view.title_name}</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="reload"></a>
+
+									<a href="javascript:;" class="remove"></a>
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body">
+							
+								<table class="table table-striped table-bordered table-hover sample_1"" >
+
+									<thead>
+										<tr>
+											<!--  
+											<th>ID</th>
+											<th>新闻名称</th>
+											<th>所属媒体主账号</th>
+											<th>平台</th>
+											<th>创建时间</th>
+											<th>状态</th>
+											<th>操作</th>	
+											-->
+											<th>ID</th>
+											<th>媒体名称</th>
+											<th>所属媒体主账号</th>
+											<th>分类</th>
+											<th>渠道价</th>
+											<th>平台价</th>
+											<th>创建时间</th>
+											<th>状态</th>
+											<th>操作</th>												
+										</tr>
+									</thead>
+
+									<tbody>
+										<volist name="view_data['list']" id="vo"  key="i">
+										<tr>
+											<td>{$vo.ac_id}</td>
+											<td>{$vo.ac_account_name}</td>
+											<td><a class="btn_bak" data-record_prev="1" href="javascript:;" data-url="{:U('Admin/Member/user_detail',array('user_id'=>$vo['bs_id']))}" >{$vo.bs_account}</a></td>
+											<td>{$vo.pg_type_explain}</td>
+											<td>{$vo.ac_money}</td>
+											<td>{$vo.pg_pt_money}</td>
+											<td>{$vo.ac_create_time}</td>
+											<td>{$vo.pg_status_explain}</td>
+											<td class="center">
+											
+											<a class="btn_bak" data-url="{$vo.pa_edit_url}" data-record_prev="1" href="javascript:;" >详情</a>
+												<!-- 详情 -->
+												
+												<!-- 
+												<if condition="($vo['recommended_status'] eq 1)">
+													<a href="{:U('Admin/AccountWeibo/edit',array('act'=>'recommended','id'=>$vo['id'],'recommended_status'=>0))}" class="check">取消推荐</a>
+												<else />
+													<a href="{:U('Admin/AccountWeibo/edit',array('act'=>'recommended','id'=>$vo['id'],'recommended_status'=>1))}" class="check">首页推荐</a>
+												</if>
+												 -->
+											</td>
+										</tr>
+
+									</volist>
+								</table>
+
+							</div>
+							
+							<p class="page_type_show">{$view_data.page}</p>
+							
+						</div>
+
+						<!-- END EXAMPLE TABLE PORTLET-->
+
+					</div>
+
+				</div>
+
+				<!-- END PAGE CONTENT-->
+
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+		</div>
+
+		<!-- END PAGE -->
+
+	</div>
+	
+	<!-- END CONTAINER -->
+
+	<!-- 页脚 -->
+	<include file="Public:foot" />
+
+	<!-- 核心插件 -->
+	<include file="Public:bottom" />
+	
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/select2.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/jquery.dataTables.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/DT_bootstrap.js"></script>
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/app.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/table-managed-Admin-Public.js"></script>         
+
+	<script type="text/javascript">
+
+		jQuery(document).ready(function() {       
+
+		   App.init();
+
+		   //TableAdvanced.init();
+		   TableManaged.init();
+		});
+
+	</script>
+ </body>
+
+<!-- END BODY -->
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+    <!-- 全局样式 -->
+    <include file="Public:top" />
+
+    <!-- BEGIN PAGE LEVEL STYLES --> 
+
+    <link href="{$global_tpl_view.Group_Resource_Path}css/jquery.fancybox.css" rel="stylesheet" />
+
+    <link href="{$global_tpl_view.Group_Resource_Path}css/chosen.css" rel="stylesheet" type="text/css"/>
+    
+    <!-- 上传插件样式 -->
+    <link type="text/css"  href="{$global_tpl_view.Group_Resource_Path}plugins/fineuploader/fineuploader-3.4.1.css" rel="stylesheet"  />
+
+    <!-- END PAGE LEVEL STYLES -->   
+
+    <style type="text/css">
+        div.row-fluid div.span3 {
+            margin-left:0;
+            margin-right:20px;
+        }
+    </style>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+    
+    <include file="Public:header" />
+    
+    <!-- BEGIN CONTAINER -->
+
+    <div class="page-container row-fluid">
+
+        <!-- 左侧导航 -->
+        <include file="Public:sidebar" />
+    
+        <!-- BEGIN PAGE -->
+
+        <div class="page-content">
+
+            <!-- BEGIN PAGE CONTAINER-->
+
+            <div class="container-fluid">
+
+                <!-- BEGIN PAGE HEADER-->
+
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                        <h3 class="page-title">
+
+                            {$global_tpl_view.module_name}<small> {$global_tpl_view.action_name}</small>
+
+                        </h3>
+
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                        <!-- 
+                        <include file="Public:hotel_menu" />
+                        -->
+                    </div>
+
+                </div>
+
+                <!-- END PAGE HEADER-->
+
+                <!-- BEGIN PAGE CONTENT-->
+
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                        <!-- BEGIN GALLERY MANAGER PORTLET-->
+
+                        <div class="portlet box purple">
+                        
+                            <div class="portlet-title">
+
+                                <div class="caption"><i class="icon-reorder"></i>{$global_tpl_view.title_name}</div>
+        
+                                <div class="tools">
+
+                                    <a href="javascript:;" class="collapse"></a>
+
+                                    <a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+                                    <a href="javascript:;" class="reload"></a>
+
+                                    <a href="javascript:;" class="remove"></a>
+
+                                </div>
+
+                            </div>
+                
+                            <div class="portlet-body">
+
+                                <!-- BEGIN GALLERY MANAGER PANEL-->
+
+                                <div class="row-fluid">
+
+                                    <div class="span4">
+
+                                        <h4>选择文件上传，一次最多选择5张</h4>
+                                        
+                                        <div class="controls">
+                                            <select  id="type" tabindex="1" class="medium m-wrap">  
+                                                <option value="">---请选择上传照片类型---</option>
+                                                <foreach name="view_data['img_types']" item="vo">     
+                                                    <option value="{$vo.type}">{$vo.explain}</option>                        
+                                                </foreach>
+                                            </select>
+                                        </div>
+                                        
+                                        <!-- 上传按钮 -->
+                                        <div id="thumbnail-fine-uploader"></div>
+                                        <div id="triggerUpload" class="btn btn-primary" style="margin-top: 10px;">
+                                             <i class="icon-upload icon-white">选择类型后"点我"上传</i>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- END GALLERY MANAGER PANEL-->
+
+                                <hr class="clearfix" />
+
+                                <!-- BEGIN GALLERY MANAGER LISTING-->
+
+                                <p>{$view_data['img_types'][1]['explain']}:</p>
+                                <div class="row-fluid">
+                                    
+                                    <volist name="view_data['img_list'][1]" id="vo">
+                                        
+                                    <div class="span3">
+
+                                        <div class="item">
+
+                                            <a class="fancybox-button" data-rel="fancybox-button" title="Photo" href="{$vo.url}">
+
+                                                <div class="zoom">
+
+                                                    <img src="{$vo.shop_url}" alt="Photo" />                    
+
+                                                    <div class="zoom-icon"></div>
+
+                                                </div>
+
+                                            </a>
+
+                                            <div class="details">
+
+                                                <a href="javascript:;" class="icon"><i class="icon-remove" data-id="{$vo.id}"></i></a>    
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                
+                                    </volist>
+                            
+                                </div>
+            
+                                <div class="space10"></div>
+                        
+                                <!-- END GALLERY MANAGER LISTING-->
+                                
+                                <p>{$view_data['img_types'][2]['explain']}:</p>
+                                <div class="row-fluid">
+                                    
+                                    <volist name="view_data['img_list'][2]" id="vo">
+                                        
+                                    <div class="span3">
+
+                                        <div class="item">
+
+                                            <a class="fancybox-button" data-rel="fancybox-button" title="Photo" href="{$vo.url}">
+
+                                                <div class="zoom">
+
+                                                    <img src="{$vo.shop_url}" alt="Photo" />                    
+
+                                                    <div class="zoom-icon"></div>
+
+                                                </div>
+
+                                            </a>
+
+                                            <div class="details">
+
+                                                <a href="javascript:;" class="icon"><i class="icon-remove" data-id="{$vo.id}"></i></a>    
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                
+                                    </volist>
+                            
+                                </div>
+            
+                                <div class="space10"></div>
+                        
+                                <!-- END GALLERY MANAGER LISTING-->
+
+                            </div>
+
+                        </div>
+                        
+                        <button data-return_prev="1" type="button" class="btn blue btn_bak">返回</button>
+
+                        <!-- END GALLERY MANAGER PORTLET-->
+
+                    </div>
+
+                </div>
+
+                <!-- END PAGE CONTENT-->
+
+            </div>
+
+            <!-- END PAGE CONTAINER-->       
+
+        </div>
+
+        <!-- END PAGE -->    
+
+    </div>
+
+    <include file="Public:foot" />
+
+    <!-- 核心插件 -->
+    <include file="Public:bottom" />
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    <script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/jquery.fancybox.pack.js"></script>   
+
+    <script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/chosen.jquery.min.js"></script>
+
+    <!-- 上传插件JS -->
+    <script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}plugins/fineuploader/fineuploader-3.4.1.js"></script>
+    
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+    <script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/app.js"></script>   
+
+    <script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/gallery.js"></script>  
+
+    
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function() {       
+
+           // initiate layout and plugins
+
+           App.init();
+
+           Gallery.init();
+
+        });
+
+    </script>
+    
+    
+    <script type="text/javascript">
+        
+        
+    (function () {
+        
+        var primary_key_id = {$view_data.primary_key_id};                  //ID
+        var type = $('#type');
+        var upload_server = '{:U('Admin/Shop/ajax_photo_upload')}';
+        var delete_server = '{:U('Admin/Shop/ajax_photo_remove')}';
+       // var go_back_url = '?s=/Admin/HotelRoom/room_img/primary_key_id/'+primary_key_id+'.html';
+        
+        var options = {
+              //上传配置
+              debug: false,
+              element: $('#thumbnail-fine-uploader')[0],    //上传按钮对象
+              validation: {
+                allowedExtensions: ['jpeg', 'jpg', 'gif', 'png'],       //上传文件后缀，留空不限制
+                sizeLimit: 512000,                              // 50 kB = 50 * 1024 字节     
+                itemLimit : 5                                       //最多选中文件数
+               },   
+              multiple: true,                   //是否允许多文件上传  
+              autoUpload: false,            //是否选中文件直接上传    (如果为false，则需要定义一个上传按钮)
+              maxConnections: 3,            //上传列队数
+        
+            //服务器配置：
+              request: {
+                 endpoint: upload_server,   
+                 params: {                                      //POST附带参数  
+                    'primary_key_id' : primary_key_id,
+                    'type' : ''
+                 },
+                 inputName: 'photo_files',          //$_FIFLE['字段名']
+                 uuidName: 'qquuid',                            //交互id
+                 totalFileSizeName: 'qqtotalfilesize'
+              },
+        
+             //按钮类型文本设置 
+             text: {
+                uploadButton: '<i class="icon-plus icon-white"></i> 选择文件',
+                 cancelButton: '取消',
+             },
+    
+              //上传回调函数
+              callbacks: {
+
+                //上传成功回调函数
+                onComplete: function(id, fileName, responseJSON) {
+                 // if (responseJSON.success) {
+               //     $('#thumbnail-fine-uploader').append('<img src="img/success.jpg" alt="' + fileName + '">');
+               //   }
+
+                },
+                
+              },
+              
+              //报错文字
+              messages: {
+                    typeError: "{file}上传文件类型错误 {extensions}.",
+                    sizeError: "{file} 文件太大 {sizeLimit}.",
+                    minSizeError: "{file} 文件太小 {minSizeLimit}.",
+                    emptyError: "{file} is empty, please select files again without it.",
+                    noFilesError: "没有上传文件，请选择.",
+                    tooManyItemsError: "您选择了 ({netItems}) 个文件.  一次只能选择 {itemLimit} 个.",
+                    retryFailTooManyItems: "Retry failed - you have reached your file limit.",
+                    onLeave: "文件被上传，如果你现在离开上传将被取消."
+                }
+                
+           };
+        
+        /* 选择上传文件类型 */
+        type.change(function () {
+            var _this = $(this);
+            if (_this.val() == '') {
+                alert('请选择上传文件类型');
+                return false;
+            }
+            
+            options.request.params.type = _this.val();
+            //实例类
+            var thumbnailuploader = new qq.FineUploader(options);
+          
+            //设置手动上传文件
+            $('#triggerUpload').click(function() {
+              thumbnailuploader.uploadStoredFiles();    //手动上传函数
+            });
+        });
+        
+        
+        /* 删除图片 */
+        var icon_remove = $('.icon-remove');
+        icon_remove.click(function () {
+            var _this = $(this);
+            var check = confirm('确定删除？');
+
+            if (check == true) {
+                //提交的地址，post传入的参数
+                $.post(delete_server,{
+                    'id' : _this.data('id')
+                },function(result){
+                    if (result.status == 0) {
+                        alert(result.msg);
+                        window.location.reload();
+                    } else {
+                        alert(result.msg);
+                    }
+                },'json');
+            }
+            
+        });
+        
+    })();   
+        
+
+</script>
+
+
+
+    <!-- END JAVASCRIPTS -->
+
+
+<!-- END BODY -->
+
+</html>

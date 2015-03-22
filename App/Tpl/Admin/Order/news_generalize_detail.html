@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+	<!-- 全局样式 -->
+	<include file="Public:top" />
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/select2_metro.css" />
+
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/chosen.css" />
+
+
+	<!-- END PAGE LEVEL STYLES -->
+
+	
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<include file="Public:header" />
+
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container row-fluid">
+
+		<!-- 左侧导航 -->
+		<include file="Public:sidebar" />
+
+		<!-- BEGIN PAGE -->  
+
+		<div class="page-content">
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->   
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+						<!-- END BEGIN STYLE CUSTOMIZER -->     
+
+						<h3 class="page-title">
+
+						{$global_tpl_view.module_name}<small> {$global_tpl_view.action_name}</small>
+
+						</h3>
+		
+					</div>
+
+				</div>
+				<!-- END PAGE HEADER-->
+
+				<!-- 订单详情-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN VALIDATION STATES-->
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>订单详情</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="collapse"></a>
+
+									<a href="javascript:;" class="reload"></a>				
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<!-- BEGIN FORM-->
+
+								<form action="{:U('Admin/Order/news_generalize_edit',array('act'=>'update_order','id'=>$view_data['order_id']))}" id="form_sample_1" method="post" class="form-horizontal">
+                     
+									<div class="alert alert-error hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										请在文本框输入相应内容.
+
+									</div>
+
+									<div class="alert alert-success hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										验证成功
+
+									</div>
+									
+						
+									<div class="control-group">
+										<label class="control-label">标题：</label>
+										<div class="controls">
+											<input disabled="disabled" type="text" class="span4 m-wrap" data-required="1"  name="title" value="{$view_data['order_info']['title']}" /> 
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">开始时间：</label>
+										<div class="controls">
+											<input disabled="disabled" type="text" class="span4 m-wrap" data-required="1"  name="start_time" value="{$view_data['order_info']['start_time']}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">原文地址：</label>
+										<div class="controls">
+											<input disabled="disabled" type="text" class="span4 m-wrap" data-required="1"  name="web_url" value="{$view_data['order_info']['web_url']}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">备注信息：<span class="required"></span></label>
+										<div class="controls">
+											<textarea disabled="disabled" rows="3" name="bz_info" class="span4 m-wrap">{$view_data['order_info']['bz_info']}</textarea>
+										</div>
+									</div>
+									
+									
+									<div class="control-group">
+										<label class="control-label">正文HTML：<span class="required"></span></label>
+										<div class="controls">
+											<textarea disabled="disabled" rows="3" name="zf_info" class="span4 m-wrap ckeditor">{$view_data['order_info']['zf_info']}</textarea>
+										</div>
+									</div>
+									
+									
+									<div class="form-actions">			
+										<button class="btn blue btn_bak" type="button" data-return_prev="1">返回</button>
+									</div>
+								
+								</form>
+
+								<!-- END FORM-->
+
+							</div>
+
+						</div>
+
+						<!-- END VALIDATION STATES-->
+
+					</div>
+
+				</div>
+				<!-- END PAGE CONTENT-->         
+			
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+
+		</div>
+
+		<!-- END PAGE -->  
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- 页脚 -->
+	<include file="Public:foot" />
+
+
+	<!-- 核心插件 -->
+	<include file="Public:bottom" />
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/jquery.validate.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/additional-methods.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/select2.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/chosen.jquery.min.js"></script>
+	
+
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<script src="{$global_tpl_view.Group_Resource_Path}js/app.js"></script>
+
+	<script src="{$global_tpl_view.Group_Resource_Path}js/form-validation-Admin-Siri-edit.js"></script> 
+		
+	
+
+	<!-- END PAGE LEVEL STYLES -->    
+
+	<script>
+
+		jQuery(document).ready(function() {   
+
+		   // initiate layout and plugins
+
+		   App.init();
+
+		  // FormValidation.init();
+		
+			
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->   
+
+
+<!-- END BODY -->
+
+</html>

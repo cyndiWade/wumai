@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+	<!-- 全局样式 -->
+	<include file="Public:top" />
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/select2_metro.css" />
+
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/chosen.css" />
+
+
+	<!-- END PAGE LEVEL STYLES -->
+
+	
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<include file="Public:header" />
+
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container row-fluid">
+
+		<!-- 左侧导航 -->
+		<include file="Public:sidebar" />
+
+		<!-- BEGIN PAGE -->  
+
+		<div class="page-content">
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+						<!-- END BEGIN STYLE CUSTOMIZER -->     
+
+						<h3 class="page-title">
+
+						{$global_tpl_view.module_name}<small> {$global_tpl_view.action_name}</small>
+
+						</h3>
+		
+					</div>
+
+				</div>
+				<!-- END PAGE HEADER-->
+				
+				
+				<!-- 订单详情-->
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN VALIDATION STATES-->
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>订单详情</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="collapse"></a>
+
+									<a href="javascript:;" class="reload"></a>				
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<!-- BEGIN FORM-->
+
+								<form action="{:U('Admin/Order/weixin_generalize_edit',array('act'=>'update_order','id'=>$view_data['order_id']))}" id="form_sample_1" method="post" class="form-horizontal">
+                     
+									<div class="alert alert-error hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										请在文本框输入相应内容.
+
+									</div>
+
+									<div class="alert alert-success hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										验证成功
+
+									</div>
+									
+									<!-- 
+									<div class="control-group">
+										<label class="control-label">广告位：</label>
+											<div class="controls">
+												<select name="ggw_type" tabindex="1" class="small m-wrap">
+														<option selected="selected" value="1">单图文</option>
+														<option value="2">多图文第一条</option>
+														<option value="3">多图文第二条</option>
+														<option value="4">多图文第3-N条</option>
+												</select>
+											</div>
+									</div>
+
+									<div class="control-group">
+										<label class="control-label">订单名称：</label>
+										<div class="controls">
+											<input type="text" class="span4 m-wrap" data-required="1"  name="yxd_name" value="{$view_data['order_info']['yxd_name']}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">标题：</label>
+										<div class="controls">
+											<input type="text" class="span4 m-wrap" data-required="1"  name="title" value="{$view_data['order_info']['title']}" >
+										</div>
+									</div>	
+									
+									<div class="control-group">
+										<label class="control-label">摘要：<span class="required"></span></label>
+										<div class="controls">
+											<textarea rows="3" name="zhaiyao" class="span4 m-wrap">{$view_data['order_info']['zhaiyao']}</textarea>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">封面是否显示在正文中：</label>
+											<div class="controls">
+												<select name="fmzw_status" tabindex="1" class="small m-wrap">
+														<option selected="selected" value="1">是</option>
+														<option value="0">否</option>	
+												</select>
+											</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">正文HTML：<span class="required"></span></label>
+										<div class="controls">
+											<textarea rows="3" name="zw_info" class="span4 m-wrap">{$view_data['order_info']['zw_info']}</textarea>
+										</div>
+									</div>
+									
+													
+									<div class="control-group">
+										<label class="control-label">原文链接：</label>
+										<div class="controls">
+											<input type="text" class="span4 m-wrap" data-required="1"  name="ly_url" value="{$view_data['order_info']['ly_url']}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">预计执行时间：</label>
+										<div class="controls">
+											<input type="text" class="span4 m-wrap" data-required="1"  name="start_time" value="{$view_data['order_info']['start_time']}" >
+										</div>
+									</div>
+										
+									<div class="control-group">
+										<label class="control-label">短信通知反馈结果：</label>
+											<div class="controls">
+												<select name="dx_status" tabindex="1" class="small m-wrap">
+													<option selected="selected" value="1">需要</option>
+													<option value="0">不需要</option>
+												</select>
+											</div>
+									</div>	
+									
+									<div class="control-group">
+										<label class="control-label">手机号：</label>
+										<div class="controls">
+											<input type="text" class="span4 m-wrap" data-required="1"  name="dx_phone" value="{$view_data['order_info']['dx_phone']}" >
+										</div>
+									</div>
+									
+									
+									<div class="control-group">
+										<label class="control-label">备注：<span class="required"></span></label>
+										<div class="controls">
+											<textarea rows="3" name="bz_info" class="span4 m-wrap">{$view_data['order_info']['bz_info']}</textarea>
+										</div>
+									</div>
+									
+
+									<div class="form-actions">			
+										<button type="submit" class="btn purple">提交</button>
+										<button class="btn" type="reset">重置</button>
+										<button class="btn blue btn_bak" type="button" data-return_prev="1">返回</button>
+									</div>
+									 -->
+									 <div class="control-group">
+										<label class="control-label">广告位：</label>
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  value="{$view_data.order_info.ggw_type|adGet}" >
+										</div>
+									</div>
+
+									<div class="control-group">
+										<label class="control-label">订单名称：</label>
+										
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  value="{$view_data.order_info.yxd_name}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">标题：</label>
+										
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  value="{$view_data.order_info.title}" >
+										</div>
+									</div>	
+									
+									<div class="control-group">
+										<label class="control-label">摘要：<span class="required"></span></label>
+										<div class="controls">
+											<textarea rows="3" disabled="disabled" class="span4 m-wrap">{$view_data['order_info']['zhaiyao']}</textarea>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">封面是否显示在正文中：</label>
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap ckeditor" data-required="1"  value="{$view_data.order_info.fmzw_status|getFenm}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">正文HTML：<span class="required"></span></label>
+										<div class="controls">
+											<textarea rows="3" disabled="disabled" name="zw_info" class="span4 m-wrap ckeditor">{$view_data['order_info']['zw_info']}</textarea>
+										</div>
+									</div>
+									
+													
+									<div class="control-group">
+										<label class="control-label">原文链接：</label>
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  name="ly_url" value="{$view_data['order_info']['ly_url']}" >
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">预计执行时间：</label>
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  name="start_time" value="{$view_data['order_info']['start_time'] | date='Y-m-d H:i:s',###}" >
+										</div>
+									</div>
+										
+									<!--
+									<div class="control-group">
+										<label class="control-label">短信通知反馈结果：</label>
+										
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  name="start_time" value="{$view_data.order_info.dx_status|getFenm}" >
+										</div>
+										
+									</div>	
+									
+									<div class="control-group">
+										<label class="control-label">手机号：</label>
+										<div class="controls">
+											<input type="text" disabled="disabled" class="span4 m-wrap" data-required="1"  name="dx_phone" value="{$view_data['order_info']['dx_phone']}" >
+										</div>
+									</div>
+									-->
+				
+									<div class="control-group">
+										<label class="control-label">备注：<span class="required"></span></label>
+										<div class="controls">
+											<textarea rows="3" disabled="disabled" name="bz_info" class="span4 m-wrap">{$view_data['order_info']['bz_info']}</textarea>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">封面：<span class="required"></span></label>
+										<div class="controls">
+											<volist name="view_data['files'][1]" id="vo">
+												<p><img src="{$vo['url']}" /></p>
+											</volist>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label">资质文件：<span class="required"></span></label>
+										<div class="controls">
+											<volist name="view_data['files'][2]" id="vo">
+												<p><img src="{$vo['url']}" /></p>
+											</volist>
+										</div>
+									</div>
+									
+									<div class="form-actions">			
+										<button class="btn blue btn_bak" type="button" data-return_prev="1">返回</button>
+									</div>
+
+								</form>
+
+								<!-- END FORM-->
+
+							</div>
+
+						</div>
+
+						<!-- END VALIDATION STATES-->
+
+					</div>
+
+				</div>
+		
+		
+
+		</div>
+
+		<!-- END PAGE -->  
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- 页脚 -->
+	<include file="Public:foot" />
+
+
+	<!-- 核心插件 -->
+	<include file="Public:bottom" />
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/jquery.validate.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/additional-methods.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/select2.min.js"></script>
+
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/chosen.jquery.min.js"></script>
+	
+
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<script src="{$global_tpl_view.Group_Resource_Path}js/app.js"></script>
+
+	<script src="{$global_tpl_view.Group_Resource_Path}js/form-validation-Admin-Siri-edit.js"></script> 
+		
+	
+
+	<!-- END PAGE LEVEL STYLES -->    
+
+	<script>
+
+		jQuery(document).ready(function() {   
+
+		   // initiate layout and plugins
+
+		   App.init();
+
+		  // FormValidation.init();
+		
+			
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->   
+
+
+<!-- END BODY -->
+
+</html>

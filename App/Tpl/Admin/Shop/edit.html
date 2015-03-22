@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<!-- 全局样式 -->	<include file="Public:top" />
+	<!-- BEGIN PAGE LEVEL STYLES -->
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/select2_metro.css" />
+	<link rel="stylesheet" type="text/css" href="{$global_tpl_view.Group_Resource_Path}css/chosen.css" />
+	<!-- END PAGE LEVEL STYLES -->	<style type="text/css">		.least {			width:70px !important;		}	</style>	
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+	<include file="Public:header" />
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container row-fluid">
+		<!-- 左侧导航 -->		<include file="Public:sidebar" />
+		<!-- BEGIN PAGE -->  
+		<div class="page-content">
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->   
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN STYLE CUSTOMIZER -->						<!-- END BEGIN STYLE CUSTOMIZER -->     
+						<h3 class="page-title">
+						{$global_tpl_view.module_name}<small> {$global_tpl_view.action_name}</small>
+						</h3>		
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>{$global_tpl_view.title_name}</div>
+								<div class="tools">
+									<a href="javascript:;" class="collapse"></a>
+									<a href="javascript:;" class="reload"></a>				
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form action="" id="form_sample_1" method="post" class="form-horizontal">                     				<input type="hidden" name="prev_url" value="{$global_tpl_view.prve_url}" />                     			
+									<div class="alert alert-error hide">
+										<button class="close" data-dismiss="alert"></button>
+										请在文本框输入相应内容.
+									</div>
+									<div class="alert alert-success hide">
+										<button class="close" data-dismiss="alert"></button>
+										验证成功
+									</div>
+									<div class="control-group">
+										<label class="control-label">商品名称：<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="shop_name" value="{$view_data.shop_name}" data-required="1" class="span4 m-wrap"/>
+										</div>
+									</div>																		<div class="control-group">										<label class="control-label">商品说明：<span class="required">*</span></label>										<div class="controls">                                            <input type="text" name="shop_content" value="{$view_data.shop_content}" data-required="1" class="span4 m-wrap"/>                                        </div>									</div>	                                             <div class="control-group">                                        <label class="control-label">商品数量：<span class="required">*</span></label>                                        <div class="controls">                                            <input type="text" name="shop_number" value="{$view_data.shop_number}" data-required="1" class="span4 m-wrap"/>                                        </div>                                    </div>                                      <div class="control-group">                                        <label class="control-label">商品所需积分：<span class="required">*</span></label>                                        <div class="controls">                                            <input type="text" name="shop_integral" value="{$view_data.shop_integral}" data-required="1" class="span4 m-wrap"/>                                        </div>                                    </div>                                                                        <div class="control-group">                                        <label class="control-label">状态：</label>                                        <div class="controls">                                            <select name="status" tabindex="1" class="small m-wrap">                                                <volist name="view_data['shop_status']" id="vo">                                                <if condition="$view_data['status'] eq $vo['status']">                                                <option value="{$vo.status}" selected="selected">{$vo.explain}</option>                                                <else />                                                <option value="{$vo.status}">{$vo.explain}</option>                                                </if>                                                </volist>                                            </select>                                        </div>                                    </div>
+									<div class="form-actions">										<button type="submit" class="btn purple">提交</button>										<button class="btn" type="reset">重置</button>										<button data-return_prev="1" type="button" class="btn blue btn_bak">返回</button>
+									</div>
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>				<!-- END PAGE CONTENT-->         
+			</div>
+			<!-- END PAGE CONTAINER-->
+		</div>
+		<!-- END PAGE -->  
+	</div>
+	<!-- END CONTAINER -->
+	<!-- 页脚 -->	<include file="Public:foot" />
+	 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D0e39c6e68bd900c80a2a50882556bae"></script>	
+	<!-- 核心插件 -->	<include file="Public:bottom" />
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/additional-methods.min.js"></script>
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/select2.min.js"></script>
+	<script type="text/javascript" src="{$global_tpl_view.Group_Resource_Path}js/chosen.jquery.min.js"></script>	
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN PAGE LEVEL STYLES -->
+	<script src="{$global_tpl_view.Group_Resource_Path}js/app.js"></script>	<script src="{$global_tpl_view.Group_Resource_Path}js/form-validation-Admin-Public.js"></script> 			
+	<!-- END PAGE LEVEL STYLES -->    
+	<script>
+		jQuery(document).ready(function() {   
+		   App.init();
+		   FormValidation.init({			   shop_name: {                   minlength: 2,                   maxlength:200,                   required: true               },               shop_content: {                   minlength: 2,                   maxlength:200,                   required: true               },               shop_number: {                   minlength: 1,                   maxlength:10,                   required: true,                   digits: true               },               shop_integral : {                   minlength: 1,                   maxlength:10,                   required: true,                   digits: true               }		   });					});
+	</script>
+	<!-- END JAVASCRIPTS -->   
+
+<!-- END BODY -->
+</html>

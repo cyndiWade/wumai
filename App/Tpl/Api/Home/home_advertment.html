@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>找拍</title>
+    <script src="/App/Public/Global/jquery/jquery-1.11.1.min.js"></script>
+    <style>
+
+        * {
+            margin:0px;
+            padding: 0px;
+        }
+
+        html, body{
+            width: 100%;
+            background:#faf8f7;
+            font-size:30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a img{
+            border: none;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 640px;
+            margin:0px auto;
+            position:relative;
+            text-align:center;
+        }
+        .page .text{
+            padding:20px;
+            text-align:left;
+        }
+
+        .tab {
+            width:620px;
+            text-align:left;
+        }
+
+        .tab-per {
+            font-size: 150px;
+            width: 145px;
+            font-weight: bolder;
+            color:#ff5b01;
+            font-style:italic;
+        }
+
+        .tab-d {
+            padding-left:10px;
+            font-size:40px;
+        }
+
+    </style>
+    <script>
+    </script>
+</head>
+<body>
+<div class="page">
+    <img src="/App/Public/Global/images/img1.jpg" />
+    <img src="/App/Public/Global/images/bar.jpg" />
+    <p class="text">&nbsp;</p>
+    <img src="/App/Uploads/{$view_data.article_img}" />
+    <p class="text">{$view_data.content}</p>
+</div>
+<div class="page" style="text-align: left;">
+    <img src="/App/Public/Global/images/bar.jpg" />
+    <p class="text">到目前为止，已有<span>{$view_data.person_number}</span>人参与投票</p>
+    <table class="tab">
+        <tr ><td class="tab-per" rowspan="2">{$view_data.support}</td><td class="tab-ico" valign="bottom"><img src="/App/Public/Global/images/btn-up.jpg" /></td></tr>
+        <tr><td class="tab-d" valign="top">%的网友表示文明</td></tr>
+    </table>
+    <table class="tab">
+        <tr ><td> </td><td class="tab-per" rowspan="2">{$view_data.nonsupport}</td><td class="tab-d" valign="bottom">%</td></tr>
+        <tr><td class="tab-d" valign="top">而认为不文明的有</td><td class="tab-ico" valign="top"><img src="/App/Public/Global/images/btn-down.jpg" /></td></tr>
+    </table>
+</div>
+<div class="page">
+    <img src="/App/Public/Global/images/img3.jpg" />
+    <table cellpadding="5" cellspacing="20">
+        <tr>
+            <td rowspan="2" valign="top"><img src="/App/Public/Global/images/logo.png" /></td>
+            <td><a href="#" target="_blank"><img src="/App/Public/Global/images/btn-iphone.png" /></a></td>
+        </tr>
+        <tr><td><a href="#" target="_blank"><img src="/App/Public/Global/images/btn-android.png" /></a></td></tr>
+    </table>
+</div>
+</body>
+</html>
